@@ -15,13 +15,34 @@ Free, open source, MIT, and there is nothing to pay for — ever.
 
 ## Screenshots
 
-### Library Grid View
-![Library Grid View](screenshots/02-library.png)
+### 1. Library — Media Grid View
+Browse media files across channels, groups, bots, and Saved Messages with preview thumbnails and one-click downloads.
 
-### Library List View
-![Library List View](screenshots/02-library-list.png)
+![Library Grid View](screenshots/02-library-grid.png)
 
-### Sign-in Screen
+### 2. Transfers — Live Download Manager
+Manage concurrent downloads with live per-connection throughput, progress bars, pause/resume, priority reordering, and queue controls.
+
+![Transfers Queue View](screenshots/04-transfers.png)
+
+### 3. Library — File Manifest List View
+Detailed tabular view displaying filenames, file types, sizes, upload dates, and status.
+
+![Library List View](screenshots/03-library-list.png)
+
+### 4. Grab Telegram Link
+Directly grab and download files by pasting any Telegram link (`t.me/...` or private channel link).
+
+![Grab Telegram Link](screenshots/05-grab-link.png)
+
+### 5. Settings & Performance
+Configure concurrent jobs, worker counts, automatic folder organization, and post-download actions.
+
+![Settings](screenshots/06-settings.png)
+
+### 6. Sign-in Screen
+Clean, direct login via phone number with animated footer credits.
+
 ![Sign In Screen](screenshots/01-sign-in.png)
 
 
