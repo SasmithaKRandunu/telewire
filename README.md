@@ -11,6 +11,20 @@ file bytes are Telegram's data centers and your disk.
 
 Free, open source, MIT, and there is nothing to pay for — ever.
 
+<p align="center">
+  <a href="https://github.com/SasmithaKRandunu/telewire/releases/download/v1.0.4/TeleWire_1.0.4_x64-setup.exe">
+    <img src="https://img.shields.io/badge/Download-Windows%20Setup%20(.exe)-0078D4?style=for-the-badge&logo=windows&logoColor=white" alt="Download Windows Setup (.exe)" />
+  </a>
+  &nbsp;&nbsp;
+  <a href="https://github.com/SasmithaKRandunu/telewire/releases/download/v1.0.4/TeleWire_1.0.4_x64_en-US.msi">
+    <img src="https://img.shields.io/badge/Download-MSI%20Package%20(.msi)-2D3748?style=for-the-badge&logo=windows&logoColor=white" alt="Download MSI Package (.msi)" />
+  </a>
+  &nbsp;&nbsp;
+  <a href="https://github.com/SasmithaKRandunu/telewire/releases/latest">
+    <img src="https://img.shields.io/badge/Latest%20Release-v1.0.4-22C55E?style=for-the-badge&logo=github&logoColor=white" alt="Latest Release v1.0.4" />
+  </a>
+</p>
+
 ---
 
 ## Screenshots
@@ -64,7 +78,18 @@ Clean, direct login via phone number with animated footer credits.
 
 ## Install
 
-### Prerequisites
+### Download (Pre-built Binaries)
+
+For Windows users, download the latest installer directly:
+
+[![Download Windows Setup](https://img.shields.io/badge/Download-Windows%20Setup%20(.exe)-0078D4?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/SasmithaKRandunu/telewire/releases/download/v1.0.4/TeleWire_1.0.4_x64-setup.exe)
+[![Download MSI Package](https://img.shields.io/badge/Download-MSI%20Package%20(.msi)-2D3748?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/SasmithaKRandunu/telewire/releases/download/v1.0.4/TeleWire_1.0.4_x64_en-US.msi)
+
+All release assets are available on the [GitHub Releases](https://github.com/SasmithaKRandunu/telewire/releases/latest) page.
+
+---
+
+### Building from Source
 
 - **Rust 1.85 or newer** — the `grammers` 0.10 crates are Rust edition 2024
 - **Node.js 18+**
