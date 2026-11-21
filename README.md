@@ -15,7 +15,14 @@ Free, open source, MIT, and there is nothing to pay for — ever.
 
 ## Screenshots
 
-<img width="2960" height="1990" alt="Screenshot 2026-08-02 140405" src="https://github.com/user-attachments/assets/cce502c7-e18f-4fbd-989c-09e889b8e928" />
+### Library Grid View
+![Library Grid View](screenshots/02-library.png)
+
+### Library List View
+![Library List View](screenshots/02-library-list.png)
+
+### Sign-in Screen
+![Sign In Screen](screenshots/01-sign-in.png)
 
 
 ---
