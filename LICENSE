@@ -1,0 +1,64 @@
+================================================================================
+TELEWIRE - END USER LICENSE AGREEMENT, TERMS & CONDITIONS, AND PRIVACY POLICY
+================================================================================
+
+PART 1: MIT LICENSE
+--------------------------------------------------------------------------------
+Copyright (c) 2026 TeleWire Open Source Contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+PART 2: TERMS AND CONDITIONS
+--------------------------------------------------------------------------------
+1. Compliance with Telegram Terms:
+   TeleWire is an independent client that connects directly to Telegram using
+   the MTProto protocol. Users agree to comply with Telegram's Terms of Service
+   (https://telegram.org/tos) and API Terms of Service (https://core.telegram.org/api/terms).
+
+2. Responsible Use:
+   You may only access and download media from chats and channels that you have
+   legitimate authorization to access. You agree not to use TeleWire for copyright
+   infringement, unlawful activities, automated spamming, or abuse that violates
+   Telegram policies.
+
+3. Disclaimer & Limitation of Liability:
+   The Software is provided without warranty of any kind. The authors and
+   contributors shall not be held liable for any damages, account restrictions,
+   flood-waits, or data loss arising from the use of this software.
+
+
+PART 3: PRIVACY POLICY
+--------------------------------------------------------------------------------
+1. Zero Telemetry:
+   TeleWire does not track, collect, or transmit any user analytics, telemetry,
+   or crash logs. No telemetry services or external analytics endpoints are used.
+
+2. Direct MTProto Connections:
+   All communications and file downloads occur directly between your device and
+   Telegram's official servers. There are no intermediate servers, proxy relays,
+   or cloud relays operated by TeleWire.
+
+3. Secure Credential Storage:
+   - Your Telegram api_hash is stored locally in your operating system's native
+     secure vault (Windows Credential Manager / Apple Keychain / Linux Secret Service).
+   - MTProto session tokens are stored in a restricted local SQLite database on your
+     device and are never uploaded or shared.
+   - Files are saved directly to your local computer.
+================================================================================
