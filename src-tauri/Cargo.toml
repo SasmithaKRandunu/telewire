@@ -1,6 +1,6 @@
 [package]
 name = "telewire"
-version = "0.0.2"
+version = "1.0.4"
 description = "Telegram direct-link download manager"
 authors = ["Sasmitha K Randunu <https://linktr.ee/sasmithakr>", "TeleWire contributors"]
 license = "MIT"

@@ -1,7 +1,7 @@
 {
   "name": "telewire",
   "private": true,
-  "version": "0.0.2",
+  "version": "1.0.4",
   "type": "module",
   "description": "Telegram direct-link download manager. No server, no bot, no cloud relay.",
   "author": "Sasmitha K Randunu (https://linktr.ee/sasmithakr)",
