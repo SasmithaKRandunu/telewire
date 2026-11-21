@@ -44,6 +44,12 @@
     "longDescription": "TeleWire downloads media from your own Telegram account straight to disk using parallel connections. No server, no bot, no cloud relay — the only two parties exchanging bytes are Telegram's data centers and your disk.",
     "copyright": "MIT licensed",
     "publisher": "TeleWire",
-    "licenseFile": "../LICENSE"
+    "licenseFile": "../LICENSE",
+    "resources": [
+      "../README.md",
+      "../LICENSE",
+      "../PRIVACY.md",
+      "../TERMS.md"
+    ]
   }
 }

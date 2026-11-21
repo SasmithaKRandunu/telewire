@@ -1,6 +1,24 @@
 ================================================================================
-TELEWIRE - END USER LICENSE AGREEMENT, TERMS & CONDITIONS, AND PRIVACY POLICY
+TELEWIRE - README, LICENSE AGREEMENT, TERMS & CONDITIONS, AND PRIVACY POLICY
 ================================================================================
+
+README / ABOUT TELEWIRE
+--------------------------------------------------------------------------------
+TeleWire is a high-performance desktop download manager for Telegram.
+It connects directly to Telegram via MTProto to pull files straight to disk
+over parallel connections — with pause, resume, queue management, and crash-safe
+chunk recovery.
+
+Key Features:
+- Direct MTProto Client: No middleman server, no bot, no proxy relay.
+- Parallel Chunked Downloads: Splits files into 512 KiB chunks over parallel connections.
+- Crash-Safe Resume: Progress is flushed to disk sidecar manifests; resumes seamlessly.
+- Smart Organization: Automatically organizes downloads by chat, date, and media type.
+- Zero Telemetry: 100% private, no analytics, no tracking, and no external calls.
+
+Full documentation, source code, and release notes:
+https://github.com/Sasmithakr/TeleWire
+
 
 PART 1: MIT LICENSE
 --------------------------------------------------------------------------------
