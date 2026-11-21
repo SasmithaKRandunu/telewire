@@ -5,6 +5,7 @@
   "type": "module",
   "description": "Telegram direct-link download manager. No server, no bot, no cloud relay.",
   "author": "Sasmitha K Randunu (https://linktr.ee/sasmithakr)",
+  "repository": "https://github.com/SasmithaKRandunu/telewire",
   "license": "MIT",
   "scripts": {
     "dev": "vite",

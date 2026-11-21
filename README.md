@@ -50,8 +50,8 @@ when you can't install Visual Studio Build Tools.
 ### Build
 
 ```bash
-git clone https://github.com/Sasmithakr/TeleWire.git
-cd TeleWire
+git clone https://github.com/SasmithaKRandunu/telewire.git
+cd telewire
 npm install
 npm run app          # run it
 npm run bundle       # produce installers in src-tauri/target/release/bundle/
