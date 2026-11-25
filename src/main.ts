@@ -54,6 +54,11 @@ let railQuery = "";
 /** Active folder tab. "all" shows every chat, grouped by kind. */
 let railFolder: ChatKind | "all" | "archived" = "all";
 let railFolderStrip: HTMLElement | null = null;
+/** The rail's scrolling list, kept so a refresh can repaint it in place. */
+let railListEl: HTMLElement | null = null;
+/** Guards against overlapping dialog fetches and focus-triggered storms. */
+let channelsRefreshing = false;
+let channelsRefreshedAt = 0;
 let railFolderFades: (() => void) | null = null;
 /** The welcome banner is a launch event, not a render event. */
 let greeted = false;
@@ -124,6 +129,7 @@ function route(state: AuthState): void {
 function teardown(): void {
   for (const off of unlisten) off();
   unlisten = [];
+  railListEl = null;
   wire?.destroy();
   browser?.destroy();
   downloads?.destroy();
@@ -232,6 +238,11 @@ async function mountShell(auth: Extract<AuthState, { stage: "ready" }>): Promise
     el("span", { html: icon("plus", 15) }),
     el("span", {}, "Add channel"),
   ]) as HTMLButtonElement;
+  const refreshBtn = el(
+    "button.btn.btn-ghost",
+    { type: "button", title: "Refresh chat list", "aria-label": "Refresh chat list" },
+    [el("span", { html: icon("refresh", 15) }), el("span", {}, "Refresh")]
+  ) as HTMLButtonElement;
 
   const railSearch = el("input.input", {
     type: "search",
@@ -300,7 +311,7 @@ async function mountShell(auth: Extract<AuthState, { stage: "ready" }>): Promise
   const rail = el("nav.rail", {}, [
     el("div.rail-head", {}, [railSearchBox, folderStrip]),
     railList,
-    el("div.rail-foot", {}, [grabBtnRail, addBtn]),
+    el("div.rail-foot", {}, [grabBtnRail, addBtn, refreshBtn]),
     resizer,
   ]);
 
@@ -390,6 +401,18 @@ async function mountShell(auth: Extract<AuthState, { stage: "ready" }>): Promise
 
   await loadChannels(railList);
   addBtn.addEventListener("click", () => promptChannel(railList));
+  refreshBtn.addEventListener("click", () => void loadChannels(railList));
+
+  // The window can stay alive for days in the tray, so a chat list read at
+  // launch goes stale the moment a channel is joined elsewhere. The backend
+  // emits this whenever the window regains focus; a quieter path refetches
+  // without replacing the rail with a skeleton or toasting when offline.
+  unlisten.push(await ipc.on("channels:refresh", () => void refreshChannelsQuiet()));
+  const onVisible = () => {
+    if (document.visibilityState === "visible") void refreshChannelsQuiet();
+  };
+  document.addEventListener("visibilitychange", onVisible);
+  unlisten.push(() => document.removeEventListener("visibilitychange", onVisible));
 
   const openGrab = () => {
     openGrabLinkModal({
@@ -568,6 +591,7 @@ function railSkeleton(): HTMLElement {
 }
 
 async function loadChannels(host: HTMLElement): Promise<void> {
+  railListEl = host;
   host.setAttribute("aria-busy", "true");
   host.replaceChildren(railSkeleton());
   const list = await guard(() => ipc.listDialogs());
@@ -576,9 +600,34 @@ async function loadChannels(host: HTMLElement): Promise<void> {
     host.replaceChildren(el("div.field-hint", { style: "padding:12px" }, "Couldn't load your channels."));
     return;
   }
+  channelsRefreshedAt = Date.now();
   channels = list;
   if (railFolderStrip) renderFolders(railFolderStrip);
   renderChannels(host);
+}
+
+/**
+ * Re-read the dialog list while keeping the current rail on screen. Used when
+ * the window regains focus or becomes visible again: a channel joined in
+ * another client should appear without restarting, but a focus flicker must
+ * not blank the list or toast an error over a brief network hiccup.
+ */
+async function refreshChannelsQuiet(): Promise<void> {
+  const host = railListEl;
+  if (!host || channelsRefreshing) return;
+  if (Date.now() - channelsRefreshedAt < 3000) return;
+  channelsRefreshing = true;
+  try {
+    const list = await ipc.listDialogs();
+    channelsRefreshedAt = Date.now();
+    channels = list;
+    if (railFolderStrip) renderFolders(railFolderStrip);
+    renderChannels(host);
+  } catch {
+    // Keep whatever the rail already shows; the next focus tries again.
+  } finally {
+    channelsRefreshing = false;
+  }
 }
 
 /** Folder order. Saved leads because it is the account's own file store. */

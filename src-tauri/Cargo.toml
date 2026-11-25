@@ -1,6 +1,6 @@
 [package]
 name = "telewire"
-version = "1.0.4"
+version = "1.0.5"
 description = "Telegram direct-link download manager"
 authors = ["Sasmitha K Randunu <https://linktr.ee/sasmithakr>", "TeleWire contributors"]
 license = "MIT"
@@ -46,6 +46,7 @@ uuid = { version = "1", features = ["v4"] }
 dirs = "5"
 sanitize-filename = "0.5"
 log = "0.4"
+tauri-plugin-single-instance = "2"
 
 # Session secrets never live in plaintext app-data (§10).
 [target.'cfg(windows)'.dependencies]

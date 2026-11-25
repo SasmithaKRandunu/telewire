@@ -12,18 +12,31 @@ file bytes are Telegram's data centers and your disk.
 Free, open source, MIT, and there is nothing to pay for — ever.
 
 <p align="center">
-  <a href="https://github.com/SasmithaKRandunu/telewire/releases/download/v1.0.4/TeleWire_1.0.4_x64-setup.exe">
+  <a href="https://github.com/SasmithaKRandunu/telewire/releases/download/v1.0.5/TeleWire_1.0.5_x64-setup.exe">
     <img src="https://img.shields.io/badge/Download-Windows%20Setup%20(.exe)-0078D4?style=for-the-badge&logo=windows&logoColor=white" alt="Download Windows Setup (.exe)" />
   </a>
   &nbsp;&nbsp;
-  <a href="https://github.com/SasmithaKRandunu/telewire/releases/download/v1.0.4/TeleWire_1.0.4_x64_en-US.msi">
+  <a href="https://github.com/SasmithaKRandunu/telewire/releases/download/v1.0.5/TeleWire_1.0.5_x64_en-US.msi">
     <img src="https://img.shields.io/badge/Download-MSI%20Package%20(.msi)-2D3748?style=for-the-badge&logo=windows&logoColor=white" alt="Download MSI Package (.msi)" />
   </a>
   &nbsp;&nbsp;
   <a href="https://github.com/SasmithaKRandunu/telewire/releases/latest">
-    <img src="https://img.shields.io/badge/Latest%20Release-v1.0.4-22C55E?style=for-the-badge&logo=github&logoColor=white" alt="Latest Release v1.0.4" />
+    <img src="https://img.shields.io/badge/Latest%20Release-v1.0.5-22C55E?style=for-the-badge&logo=github&logoColor=white" alt="Latest Release v1.0.5" />
   </a>
 </p>
+
+---
+
+## What's new in 1.0.5
+
+- **Only one copy runs.** Launching TeleWire while it is already open (or
+  hidden in the tray) no longer starts a second app: the existing window is
+  restored and focused. That removes the duplicate tray icons, the second
+  Telegram session, and two processes writing the same download queue.
+- **The chat list keeps itself current.** Channels joined in another Telegram
+  client now show up as soon as the window regains focus, and there is a
+  **Refresh** button in the chat rail. Because closing the window only hides
+  the app, a relaunch alone never refetched the list — this does.
 
 ---
 
@@ -82,8 +95,8 @@ Clean, direct login via phone number with animated footer credits.
 
 For Windows users, download the latest installer directly:
 
-[![Download Windows Setup](https://img.shields.io/badge/Download-Windows%20Setup%20(.exe)-0078D4?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/SasmithaKRandunu/telewire/releases/download/v1.0.4/TeleWire_1.0.4_x64-setup.exe)
-[![Download MSI Package](https://img.shields.io/badge/Download-MSI%20Package%20(.msi)-2D3748?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/SasmithaKRandunu/telewire/releases/download/v1.0.4/TeleWire_1.0.4_x64_en-US.msi)
+[![Download Windows Setup](https://img.shields.io/badge/Download-Windows%20Setup%20(.exe)-0078D4?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/SasmithaKRandunu/telewire/releases/download/v1.0.5/TeleWire_1.0.5_x64-setup.exe)
+[![Download MSI Package](https://img.shields.io/badge/Download-MSI%20Package%20(.msi)-2D3748?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/SasmithaKRandunu/telewire/releases/download/v1.0.5/TeleWire_1.0.5_x64_en-US.msi)
 
 All release assets are available on the [GitHub Releases](https://github.com/SasmithaKRandunu/telewire/releases/latest) page.
 

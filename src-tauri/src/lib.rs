@@ -12,7 +12,7 @@ mod telegram;
 use std::sync::Arc;
 use tauri::menu::{Menu, MenuItem, PredefinedMenuItem};
 use tauri::tray::{MouseButton, MouseButtonState, TrayIconBuilder, TrayIconEvent};
-use tauri::Manager;
+use tauri::{Emitter, Manager};
 
 use commands::AppState;
 use telegram::{download::Engine, Telegram};
@@ -24,14 +24,38 @@ fn get_main_window(app: &tauri::AppHandle) -> Option<tauri::WebviewWindow> {
 
 pub fn run() {
     tauri::Builder::default()
+        // Must be the first plugin registered. A second launch of the .exe (a
+        // double-click on the shortcut, an installer relaunch, a stray Start-menu
+        // hit) hands its arguments to this callback in the instance that already
+        // owns the session, then exits — rather than starting a rival Telegram
+        // client with its own tray icon and its own copy of the download queue.
+        // Closing the window only hides it, so that first instance is usually
+        // still alive; showing and focusing it is the whole job here.
+        .plugin(tauri_plugin_single_instance::init(|app, _args, _cwd| {
+            if let Some(window) = get_main_window(app) {
+                let _ = window.show();
+                let _ = window.unminimize();
+                let _ = window.set_focus();
+            }
+        }))
         .plugin(tauri_plugin_opener::init())
         .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_notification::init())
         .on_window_event(|window, event| {
-            if let tauri::WindowEvent::CloseRequested { api, .. } = event {
-                // Keep running in background as taskbar/tray icon so scheduled transfers run!
-                api.prevent_close();
-                let _ = window.hide();
+            match event {
+                tauri::WindowEvent::CloseRequested { api, .. } => {
+                    // Keep running in background as taskbar/tray icon so scheduled transfers run!
+                    api.prevent_close();
+                    let _ = window.hide();
+                }
+                // Closing only hides to the tray, so this process can outlive the
+                // chat list it fetched at launch. Every time the window comes back
+                // into focus the rail asks for the dialogs again, which is how a
+                // channel joined in another client shows up without a full exit.
+                tauri::WindowEvent::Focused(true) => {
+                    let _ = window.emit("channels:refresh", ());
+                }
+                _ => {}
             }
         })
         .setup(|app| {
